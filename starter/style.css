@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #333;
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* LAYOUT */
+main {
+  position: relative;
+  width: 100rem;
+  height: 60rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  filter: blur();
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+}
+
+.side {
+  width: 50%;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side h1 {
+  font-weight: 700;
+  font-size: 40px;
+  color: #c7365f;
+}
+
+.side h3 {
+  font-weight: 700;
+  font-size: 80px;
+  color: #c7365f;
+  margin-bottom:auto ;
+}
+
+.score-box {
+  width: 65%;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 9px;
+  background-color: #c7365f; 
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.score-box span {
+  font-size: 25px;
+  color: #ddd;
+}
+
+.options {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  align-items: center;
+  padding: 20px 0px ;
+  gap: 40px;
+}
+
+.options button {
+  box-shadow: rgb(0, 0, 0,0.1) 0 17px 35px;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  border: none;
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.options button:active {
+  transform: translate(0%, 3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
