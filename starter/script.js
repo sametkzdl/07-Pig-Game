@@ -6,8 +6,8 @@ const hold = document.querySelector('.hold');
 const options = document.querySelector('.options');
 const diceImg = document.querySelector('.dice');
 //--------------------------------------
-const potencialScoreEl = document.querySelector('.potancial-score');
-const totalScoreEl = document.querySelector('.total-score');
+const potencialScoreEl1 = document.querySelector('.potancial-score');
+const totalScoreEl1 = document.querySelector('.total-score');
 //----------------------------------------
 const potencialScoreEl2 = document.querySelector('.potancial-score2');
 const totalScoreEl2 = document.querySelector('.total-score2');
@@ -18,13 +18,11 @@ let randomNumber = generateRandomNumber();
 // ---------------     roll dice button -------------
 let potencialScore = 0;
 let totalScore = 0;
-let totalScore2 = 0;
-
-function (player1,player2) {
-    if (randomNumber === 1) {
-        
-    }
-}
+let currentPlayer = '1';
+let players = [
+  { potencialScoreEl: potencialScoreEl1, totalScoreEl: totalScoreEl1 },
+  { potencialScoreEl: potencialScoreEl2, totalScoreEl: totalScoreEl2 },
+];
 
 rollDice.addEventListener('click', function () {
   diceImg.classList.remove('hidden');
@@ -34,11 +32,12 @@ rollDice.addEventListener('click', function () {
   if (randomNumber === 1) {
     randomNumber = potencialScore = 0;
     diceImg.src = 'dice-1.png';
+    players[currentPlayer - 1].potencialScoreEl.innerHTML = potencialScore;
+    currentPlayer === '1' ? (currentPlayer = '2') : (currentPlayer = '1');
   } else {
     potencialScore = potencialScore + randomNumber;
+    players[currentPlayer - 1].potencialScoreEl.innerHTML = potencialScore;
   }
-
-  potencialScoreEl.innerHTML = potencialScore;
 
   if (randomNumber === 2) {
     diceImg.src = 'dice-2.png';
@@ -59,9 +58,14 @@ rollDice.addEventListener('click', function () {
 
 hold.addEventListener('click', function () {
   totalScore = totalScore + potencialScore;
-  totalScoreEl.innerHTML = totalScore;
-  potencialScoreEl.innerHTML = 0;
   potencialScore = 0;
+  console.log(currentPlayer, 'currentPlayer');
+  players[currentPlayer - 1].totalScoreEl.innerHTML = totalScore;
+  players[currentPlayer - 1].potencialScoreEl.innerHTML = potencialScore;
+
+  currentPlayer === '1' ? (currentPlayer = '2' ? totalScore: ) : (currentPlayer = '1');
+
+  
 
   if (totalScore >= 100) {
     document.querySelector('.side').style.cssText = `
