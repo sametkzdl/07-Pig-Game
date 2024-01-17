@@ -18,6 +18,7 @@ let randomNumber = generateRandomNumber();
 // ---------------     roll dice button -------------
 let potencialScore = 0;
 let totalScore = 0;
+let totalscore2 = 0;
 let currentPlayer = '1';
 let players = [
   { potencialScoreEl: potencialScoreEl1, totalScoreEl: totalScoreEl1 },
@@ -57,19 +58,23 @@ rollDice.addEventListener('click', function () {
 // ----------- hold button ------------
 
 hold.addEventListener('click', function () {
-  totalScore = totalScore + potencialScore;
+  if (currentPlayer === '2') {
+    totalScore = totalScore + potencialScore;
+    totalScoreEl2.innerHTML = totalScore;
+  } else if (currentPlayer === '1') {
+    totalscore2 = totalscore2 + potencialScore;
+    totalScoreEl1.innerHTML = totalscore2;
+  }
+  console.log('totalscore', totalScore);
   potencialScore = 0;
-  console.log(currentPlayer, 'currentPlayer');
-  players[currentPlayer - 1].totalScoreEl.innerHTML = totalScore;
-  players[currentPlayer - 1].potencialScoreEl.innerHTML = potencialScore;
 
-  currentPlayer === '1' ? (currentPlayer = '2' ? totalScore: ) : (currentPlayer = '1');
-
-  
-
-  if (totalScore >= 100) {
-    document.querySelector('.side').style.cssText = `
-  background-color: #2f2f2f`;
+  currentPlayer === '1' ? (currentPlayer = '2') : (currentPlayer = '1');
+  if (totalScoreEl1.innerHTML >= 100) {
+    document.querySelector('.left').style.cssText = `
+    background-color: #2f2f2f`;
+  } else if (totalScoreEl2.innerHTML >= 100) {
+    document.querySelector('.right').style.cssText = `
+    background-color: #2f2f2f`;
   }
 });
 
